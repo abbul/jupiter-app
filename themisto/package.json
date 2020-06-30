@@ -1,0 +1,14 @@
+{
+  "name": "themisto",
+  "version": "1.0.0",
+  "description": "APP que busca productos en pagina web de proveedores",
+  "main": "app.js",
+  "scripts": {
+    "dev": "node ./src/app"
+  },
+  "author": "Abbul Rodriguez",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^4.0.1"
+  }
+}
