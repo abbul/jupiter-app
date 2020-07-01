@@ -1,7 +1,7 @@
 {
   "name": "themisto",
   "version": "1.0.0",
-  "description": "APP que busca productos en pagina web de proveedores",
+  "description": "Busca productos publicados en las paginas web de los proveedores",
   "main": "app.js",
   "scripts": {
     "dev": "node ./src/app"

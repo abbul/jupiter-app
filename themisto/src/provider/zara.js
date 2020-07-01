@@ -24,7 +24,7 @@ async function search(page,query,orderID) {
             order_id : orderID
         });
     }
-    process.send({ orderID : orderID, status : "fulfilled", data : products})
+    return products
 }
 
 module.exports={

@@ -1,6 +1,6 @@
 # jupiter-app
 
-Ir jupiter https://jupiter-app.herokuapp.com/
+Ir a jupiter https://jupiter-app.herokuapp.com/
 
 Jupiter-app es una APP REST desarrollada en Node.js, su funcionalidad es la busqueda de productos publicados en proveedores web. 
 Constan de dos aplicaciones, cada una cumple los siguientes roles...
