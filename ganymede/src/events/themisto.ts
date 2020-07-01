@@ -10,27 +10,37 @@ export const eNewOrder = async (order : any) => {
     const childThemisto = fork(pathThemisto, order)
     childThemisto.send({ orderID: order.id, provider: order.provider, query: order.query })
     childThemisto.on('message', async message => {
-      if (message.status === 'processing') {
-        await OrderRepository.update(message.orderID, { status: 'processing' })
-      } else if (message.status === 'failed') {
-        await OrderRepository.update(message.orderID, { status: 'failed' })
-      } else if (message.status === 'fulfilled') {
-        const orderUpdated = await OrderRepository.update(message.orderID, { status: 'fulfilled', result: message.data })
-        await ProductRepository.saveMany(message.data)
-        /*
+      const { status, orderID } = message
+      if (status === 'processing') {
+        await OrderRepository.update(orderID, { status: 'processing' })
+      } else if (status === 'failed') {
+        await OrderRepository.update(orderID, { status: 'failed' })
+      } else if (status === 'fulfilled') {
+        const { data } = message
+        const orderUpdated = await OrderRepository.update(orderID, { status: 'fulfilled', list_result: data })
+        if (!orderUpdated) {
+          console.info(`Error al actualizar la ORDER_ID =${orderID}`)
+        }
+        const products = await ProductRepository.saveMany(data)
+        if (!products) {
+          console.info(`Error al persistir productos de ORDER_ID =${orderID}`)
+        }
         axios(orderUpdated.callback_url, {
           method: 'POST',
           data: {
-            body: message.data
+            status: 'fulfilled',
+            api: {
+              url: `https://ganymede-api/api/product/search-order/${orderID}`,
+              method: 'GET'
+            }
           },
           headers: {
             'Content-Type': 'application/json'
           }
         })
           .then((body) => body.data)
-          .catch((err) => console.log('err :>> ', err))
-          .then(res => console.log('res :>> ', res))
-          */
+          .catch(() => console.log('err :>> ', 'ERR'))
+          .then(() => console.log('res :>> ', 'OK'))
       }
     })
     return true

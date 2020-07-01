@@ -31,7 +31,7 @@ const Order = new mongoose.Schema({
     maxlength: 50,
     required: ['The property Status is required']
   },
-  result: []
+  list_result: []
 }, {
   collection: 'order',
   toJSON: {

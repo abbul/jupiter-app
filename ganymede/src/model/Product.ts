@@ -16,20 +16,16 @@ const Product = new mongoose.Schema({
     required: [true, 'The property Name is required']
   },
   price: {
-    type: Number,
+    type: mongoose.SchemaTypes.Decimal128,
     ref: 'Price',
-    minlength: 3,
-    maxlength: 50,
     required: [true, 'The property Price is required']
   },
   original_price: {
-    type: String,
+    type: mongoose.SchemaTypes.Decimal128,
     ref: 'Original Price',
-    minlength: 3,
-    maxlength: 50,
-    required: [true, 'The property Original Price is required']
+    required: false
   },
-  category_id: {
+  category: {
     type: String,
     ref: 'Category',
     minlength: 3,
@@ -41,25 +37,20 @@ const Product = new mongoose.Schema({
     ref: 'Description',
     minlength: 3,
     maxlength: 50,
-    required: [true, 'The property Description is required']
+    required: [false]
   },
-  images: {
-    type: Array,
-    min: 5,
-    max: 200
+  image: {
+    type: String,
+    ref: 'Image',
+    minlength: 20,
+    maxlength: 500,
+    required: [true, 'The property Image is required']
   },
-  searchs: [{
-    order_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'OrdenID',
-      required: [true, 'The property OrdenID is required']
-    },
-    created_at: {
-      type: Date,
-      ref: 'Created',
-      required: [true, 'The property Created is required']
-    }
-  }]
+  order_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'OrdenID',
+    required: [true, 'The property OrdenID is required']
+  }
 }, {
   collection: 'product',
   toJSON: {

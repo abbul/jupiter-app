@@ -1,4 +1,4 @@
-import Product from '../model/Order'
+import Product from '../model/Product'
 class ProductRepository {
   private model : any
 
