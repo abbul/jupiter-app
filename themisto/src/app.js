@@ -8,7 +8,7 @@ process.on("message",async (message)=>{
     process.send({ orderID : message.orderID, status : "processing"})
     await handler(page,message.provider,message.query,message.orderID)
   } catch (error) {
-      process.send({ orderID :message.orderID, status : "failed"})
+      process.send({ orderID :message.orderID, status : "failed", data : error.message})
   }finally{
     await browser.close();
   }
