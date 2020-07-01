@@ -4,7 +4,7 @@ import { validSearch } from '../utils/validObjects'
 import ProductRepository from '../repository/ProductRepository'
 import OrderRepository from '../repository/OrderRepository'
 import { responseJSON } from '../utils/responseJSON'
-import { fork } from 'child_process'
+import { eNewOrder } from '../events/themisto'
 
 export class OrderController {
   async create (req: Request, res: Response) {
@@ -27,11 +27,10 @@ export class OrderController {
     }
 
     try {
-      const child = fork(`${__dirname}/app.js`, order)
-
-      child.on('message', function (m) {
-        console.log('El PADRE tiene mensaje: ', m)
-      })
+      const resultChild = await eNewOrder(order)
+      if (!resultChild) {
+        return responseJSON(true, 'order-error_child', 'Error Interno al empezar busqueda', [])
+      }
       return responseJSON(true, 'order-success', 'Orden creadad', order)
     } catch (error) {
       return responseJSON(false, 'order-error_internal_fork', 'Error Interno del fork.', order)

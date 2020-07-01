@@ -26,7 +26,7 @@ class OrderRepository {
     return await this.model.find()
   }
 
-  async update (id : String, objOrder : JSON) {
+  async update (id : String, objOrder : Object) {
     return await this.model.findOneAndUpdate(
       { _id: id },
       objOrder,

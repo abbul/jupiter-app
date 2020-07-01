@@ -1,18 +1,12 @@
 const falabella = require("../provider/falabella")
 const zara = require("../provider/zara")
-const fravega = require("../provider/fravega")
 
-async function handler(page,provider,parmerts) {
+async function handler(page,provider,query) {
     switch (provider) {
         case "falabella":
-            falabella.search(page,parmerts)
-            break;
+            return falabella.search(page,query)
         case "zara":
-            zara.search(page,parmerts)
-            break;
-        case "fravega":
-            fravega.search(page,parmerts)
-            break;
+            return zara.search(page,query)
         default:
             return undefined
     }

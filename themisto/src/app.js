@@ -1,11 +1,17 @@
 const puppeteer = require('puppeteer');
 const {handler} = require("./utils/handler");
 
-(async () => {
-  const nameProvider = "falabella"
-  const parmeters = "zapatos"
+process.on("message",async (message)=>{
   const browser = await puppeteer.launch({headless: false});
   const page = await browser.newPage();
-  await handler(page,nameProvider,parmeters)
-  //await browser.close();
-})();
+  try {
+    process.send({ orderID : message.orderID, status : "processing"})
+    const result = await handler(page,message.provider,message.query)
+    console.log('result :>> ', result);
+    process.send({ orderID : message.orderID, status : "fulfilled", data : result})
+  } catch (error) {
+      process.send({ orderID :message.orderID, status : "failed"})
+  }finally{
+    await browser.close();
+  }
+})
