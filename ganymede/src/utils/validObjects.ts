@@ -1,3 +1,10 @@
+/**
+ * Valida que todos los valores existan
+ * @param query
+ * @param provider
+ * @param options
+ * @param callbackUrl
+ */
 export const validSearch = (query : string, provider : string, options : JSON, callbackUrl : string) : Array<String> => {
   const errors = []
   if (!query) {

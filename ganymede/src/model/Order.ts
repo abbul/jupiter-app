@@ -31,6 +31,13 @@ const Order = new mongoose.Schema({
     maxlength: 50,
     required: ['The property Status is required']
   },
+  created_at: {
+    type: Date,
+    default: Date.now
+  },
+  updated_at: {
+    type: Date
+  },
   list_result: []
 }, {
   collection: 'order',
