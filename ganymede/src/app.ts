@@ -5,8 +5,8 @@ import mongoose from 'mongoose'
 import { Routes } from './routes'
 require('dotenv').config({ path: '.env' })
 
-export const app = express()
-mongoose.connect(process.env.URL_DB || '', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }, () => {
+const app = express()
+mongoose.connect(process.env.URL_DB || '', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }).then(() => {
   app.use(express.urlencoded({ extended: false }))
   app.use(express.json({}))
 
@@ -22,4 +22,6 @@ mongoose.connect(process.env.URL_DB || '', { useNewUrlParser: true, useCreateInd
   })
 
   app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`))
-}).catch((error: any) => console.info(error))
+}).catch((error: any) => console.error('Error MONGODB :>> ', error.message))
+
+export default app

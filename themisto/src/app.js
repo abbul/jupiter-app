@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const {handler} = require("./utils/handler");
 
 process.on("message",async (message)=>{
-  const browser = await puppeteer.launch({headless: true});
+  const browser = await puppeteer.launch({headless: true, args: ['--no-sandbox']});
   const page = await browser.newPage();
   const {orderID,provider,query} = message
   try {
