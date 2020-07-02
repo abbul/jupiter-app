@@ -19,7 +19,7 @@ class ProductRepository {
   }
 
   async findByCategory (categoryID: string) {
-    return await this.model.find({ category_id: categoryID })
+    return await this.model.find({ category: categoryID })
   }
 
   async findAll () {

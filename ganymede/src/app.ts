@@ -6,7 +6,6 @@ import { Routes } from './routes'
 require('dotenv').config({ path: '.env' })
 
 export const app = express()
-
 mongoose.connect(process.env.URL_DB || '', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }, () => {
   app.use(express.urlencoded({ extended: false }))
   app.use(express.json({}))
@@ -22,6 +21,5 @@ mongoose.connect(process.env.URL_DB || '', { useNewUrlParser: true, useCreateInd
     })
   })
 
-  app.listen(3000)
-  console.log('APP-listening...')
+  app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`))
 }).catch((error: any) => console.info(error))
