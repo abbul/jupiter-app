@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import { Request, Response } from 'express'
-import { validSearch } from '../utils/validObjects'
+import { validSearch } from '../util/validObjects'
 import OrderRepository from '../repository/OrderRepository'
-import { responseJSON } from '../utils/responseJSON'
-import { eNewOrder } from '../events/themisto'
+import { responseJSON } from '../util/responseJSON'
+import { eNewOrder } from '../event/themisto'
 
 export class OrderController {
   /**
@@ -18,10 +18,12 @@ export class OrderController {
     }
 
     const order = await OrderRepository.save({
+      status: 'received',
       query,
       provider,
       options,
-      callback_url: callbackUrl
+      callbackUrl: 'asd',
+      createdAt: new Date(Date.now())
     })
 
     if (!order) {

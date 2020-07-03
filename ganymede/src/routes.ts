@@ -3,7 +3,7 @@ import { ProductController } from './controller/ProductController'
 import { IndexController } from './controller/IndexController'
 
 /**
- * Expone todas las routes posibles en la API.
+ * Expone todos los "endpoints" posibles en la API.
  */
 export const Routes = [
   {

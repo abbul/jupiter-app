@@ -3,15 +3,17 @@ import ProductRepository from '../repository/ProductRepository'
 import axios from 'axios'
 import { fork } from 'child_process'
 import path from 'path'
+// eslint-disable-next-line no-unused-vars
+import { IOrderModel } from '../model/Order'
 const pathThemisto = path.join(__dirname, '../../../themisto/src/app.js')
 
 /**
  * Delegara la orden de busqueda a "themisto". A su vez notificara el resultado de la misma.
  * @param order Es la orden de busqueda
  */
-export const eNewOrder = async (order : any) => {
+export const eNewOrder = async (order : IOrderModel) => {
   try {
-    const childThemisto = fork(pathThemisto, order)
+    const childThemisto = fork(pathThemisto, [order.id, order.provider, order.query])
     childThemisto.send({ orderID: order.id, provider: order.provider, query: order.query })
     childThemisto.on('message', async message => {
       await validMessage(message)

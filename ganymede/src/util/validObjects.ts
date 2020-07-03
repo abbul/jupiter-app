@@ -1,9 +1,9 @@
 /**
  * Valida que todos los valores existan
- * @param query
- * @param provider
- * @param options
- * @param callbackUrl
+ * @param query Es es palabra para buscar en el proveedor
+ * @param provider Es el proveedor donde se realizara la busqueda
+ * @param options Informacion adicional para la busqueda. Credenciales,parametros, etc.
+ * @param callbackUrl Es la url donde notificaremos el resultado de la busqueda
  */
 export const validSearch = (query : string, provider : string, options : JSON, callbackUrl : string) : Array<String> => {
   const errors = []

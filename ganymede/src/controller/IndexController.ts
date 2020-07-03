@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import { Request, Response } from 'express'
-import { responseJSON } from '../utils/responseJSON'
+import { responseJSON } from '../util/responseJSON'
 import { Routes } from '../routes'
 
 export class IndexController {
@@ -14,6 +14,6 @@ export class IndexController {
         route: `https://jupiter-app.herokuapp.com${route.route}`
       }
     })
-    return responseJSON(true, 'welcome', 'Bienvenido a Jupiter-app', routes)
+    return responseJSON(true, 'welcome', 'Welcome to Jupiter-app...', { provider: ['zara', 'falabella'], endpoints: routes })
   }
 }

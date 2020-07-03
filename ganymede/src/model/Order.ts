@@ -1,6 +1,10 @@
 import mongoose from 'mongoose'
+// eslint-disable-next-line no-unused-vars
+import { IOrder } from '../interface/IOrder'
 
-const Order = new mongoose.Schema({
+export interface IOrderModel extends IOrder, mongoose.Document {};
+
+export const OrderSchema = new mongoose.Schema({
   query: {
     type: String,
     ref: 'Query',
@@ -46,4 +50,5 @@ const Order = new mongoose.Schema({
   }
 })
 
-export default mongoose.model('Order', Order)
+const Order = mongoose.model<IOrderModel>('Order', OrderSchema)
+export default Order

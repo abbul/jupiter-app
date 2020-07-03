@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import { Request, Response } from 'express'
 import ProductRepository from '../repository/ProductRepository'
-import { responseJSON } from '../utils/responseJSON'
+import { responseJSON } from '../util/responseJSON'
 
 export class ProductController {
   /**

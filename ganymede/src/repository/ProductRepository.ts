@@ -1,4 +1,7 @@
+// eslint-disable-next-line no-unused-vars
 import Product from '../model/Product'
+// eslint-disable-next-line no-unused-vars
+import { IProduct } from '../interface/IProduct'
 class ProductRepository {
   private model : any
 
@@ -6,11 +9,11 @@ class ProductRepository {
     this.model = model
   }
 
-  async save (objProduct : JSON) {
+  async save (objProduct : IProduct) {
     return await this.model.create(objProduct)
   }
 
-  async saveMany (objProduct : Array<Object>) {
+  async saveMany (objProduct : Array<IProduct>) {
     return await this.model.create(objProduct)
   }
 
