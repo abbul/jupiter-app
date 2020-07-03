@@ -33,21 +33,21 @@ export const ProductSchema = new mongoose.Schema({
     type: String,
     ref: 'Category',
     lowercase: true,
-    minlength: 3,
-    maxlength: 50,
+    minlength: 1,
+    maxlength: 25,
     required: [true, 'The property Category is required']
   },
   description: {
     type: String,
     ref: 'Description',
-    minlength: 3,
-    maxlength: 50,
+    minlength: 1,
+    maxlength: 100,
     required: [false]
   },
   image: {
     type: String,
     ref: 'Image',
-    minlength: 20,
+    minlength: 15,
     maxlength: 500,
     required: [true, 'The property Image is required']
   },

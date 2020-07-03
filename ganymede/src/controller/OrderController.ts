@@ -22,7 +22,7 @@ export class OrderController {
       query,
       provider,
       options,
-      callbackUrl: 'asd',
+      callback_url: callbackUrl,
       createdAt: new Date(Date.now())
     })
 

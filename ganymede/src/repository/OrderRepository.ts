@@ -26,10 +26,6 @@ class OrderRepository {
     }
   }
 
-  async findToCategory (categoryID: string) {
-    return await this.model.find(categoryID)
-  }
-
   async findAll () {
     return await this.model.find().select('query provider status created_at')
   }

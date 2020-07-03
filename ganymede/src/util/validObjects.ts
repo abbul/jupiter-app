@@ -5,7 +5,7 @@
  * @param options Informacion adicional para la busqueda. Credenciales,parametros, etc.
  * @param callbackUrl Es la url donde notificaremos el resultado de la busqueda
  */
-export const validSearch = (query : string, provider : string, options : JSON, callbackUrl : string) : Array<String> => {
+export const validSearch = (query : string, provider : string, options : Object, callbackUrl : string) : Array<String> => {
   const errors = []
   if (!query) {
     errors.push('query')

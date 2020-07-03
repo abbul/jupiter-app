@@ -14,6 +14,6 @@ export class IndexController {
         route: `https://jupiter-app.herokuapp.com${route.route}`
       }
     })
-    return responseJSON(true, 'welcome', 'Welcome to Jupiter-app...', { provider: ['zara', 'falabella'], endpoints: routes })
+    return responseJSON(true, 'welcome', 'Welcome to Jupiter-app...', { provider: ['zara', 'dexter'], endpoints: routes })
   }
 }

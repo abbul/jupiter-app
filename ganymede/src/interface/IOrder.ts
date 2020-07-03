@@ -4,7 +4,8 @@ export interface IOrder {
     query: string
     provider: string
     options?: Object
-    callbackUrl: string
+    // eslint-disable-next-line camelcase
+    callback_url: string
     status: string
     createdAt: Date
     updatedAt?: Date

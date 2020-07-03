@@ -8,15 +8,15 @@ export const OrderSchema = new mongoose.Schema({
   query: {
     type: String,
     ref: 'Query',
-    minlength: 3,
-    maxlength: 50,
+    minlength: 1,
+    maxlength: 25,
     required: [true, 'The property Query is required']
   },
   provider: {
     type: String,
     ref: 'Provider',
-    minlength: 3,
-    maxlength: 50,
+    minlength: 1,
+    maxlength: 20,
     required: [true, 'The property Provider is required']
   },
   options: [],
@@ -32,7 +32,7 @@ export const OrderSchema = new mongoose.Schema({
     ref: 'Status',
     default: 'received',
     minlength: 3,
-    maxlength: 50,
+    maxlength: 10,
     required: ['The property Status is required']
   },
   created_at: {

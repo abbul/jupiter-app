@@ -11,8 +11,8 @@ export class ProductController {
     const { product_category_id: productCategoryID } = req.params
     const products = await ProductRepository.findByCategory(productCategoryID)
 
-    if (!products) {
-      return responseJSON(false, 'products-not_found', 'No hay productos', [])
+    if (products.length < 1) {
+      return responseJSON(false, 'products-category_not_found', 'No hay productos de esa categoria', [])
     }
     return responseJSON(true, 'products-sent', 'Productos enviados', products)
   }

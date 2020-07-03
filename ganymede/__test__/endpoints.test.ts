@@ -32,27 +32,46 @@ describe('All endpoints', () => {
     done()
   })
 
-  /*
-  test('Read Order By ID -- api/product/search-order/', async done => {
-    const result : any = await request.get(`api/product/search-order/${orderID}`)
+  test('Create Order -- ERROR - /api/product/search', async done => {
+    const result : any = await request.post('/api/product/search').send({ ...providerOK, callback_url: 'a' })
+    expect(result.statusCode).toEqual(200)
+    expect(result.body.result).toEqual('order-error_internal')
+    done()
+  })
+
+  test('Read Order -- api/product/search-order/:order_id', async done => {
+    const result : any = await request.get(`/api/product/search-order/${orderID}`)
     expect(result.statusCode).toEqual(200)
     expect(result.body.body.id).toEqual(orderID)
     expect(result.body.result).toEqual('order-sent')
     done()
   })
 
+  test('Read Order -- ERROR -- api/product/search-order/:order_id', async done => {
+    const result : any = await request.get('/api/product/search-order/fffffff')
+    expect(result.statusCode).toEqual(200)
+    expect(result.body.result).toEqual('order-not_found')
+    done()
+  })
+
   test('Read All Order -- /api/product/search-orders', async done => {
-    const result : any = await request.get('api/product/search-orders/')
+    const result : any = await request.get('/api/product/search-orders/')
     expect(result.statusCode).toEqual(200)
     expect(result.body.result).toEqual('orders-sent')
     done()
   })
-  */
 
-  test('Read Products By Category -- /api/product/category/:product_category_id', async done => {
-    const result : any = await request.get('/api/product/category/CategoryIdErr')
+  test('Read Products --- /api/product/category/:product_category_id', async done => {
+    const result : any = await request.get('/api/product/category/camiseta')
     expect(result.statusCode).toEqual(200)
     expect(result.body.result).toEqual('products-sent')
+    done()
+  })
+
+  test('Read Products -- ERROR -- /api/product/category/:product_category_id', async done => {
+    const result : any = await request.get('/api/product/category/xxxxxxx')
+    expect(result.statusCode).toEqual(200)
+    expect(result.body.result).toEqual('products-category_not_found')
     done()
   })
 })

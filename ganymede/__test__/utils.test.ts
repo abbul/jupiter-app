@@ -1,5 +1,5 @@
-import { responseJSON } from '../src/utils/responseJSON'
-import { validSearch } from '../src/utils/validObjects'
+import { responseJSON } from '../src/util/responseJSON'
+import { validSearch } from '../src/util/validObjects'
 
 describe('Utils', () => {
   test('Response JSON - success', async (done) => {
