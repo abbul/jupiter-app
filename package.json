@@ -31,7 +31,8 @@
       "express": "^4.15.4",
       "mongoose": "^5.9.20",
       "morgan": "^1.10.0",
-      "reflect-metadata": "^0.1.10"
+      "reflect-metadata": "^0.1.10",
+      "puppeteer": "^4.0.1"
    },
    "scripts": {
       "start": "node build/app.js",

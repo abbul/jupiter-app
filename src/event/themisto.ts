@@ -5,7 +5,7 @@ import { fork } from 'child_process'
 import path from 'path'
 // eslint-disable-next-line no-unused-vars
 import { IOrderModel } from '../model/Order'
-const pathThemisto = path.join(__dirname, '../../../themisto/src/app.js')
+const pathThemisto = path.join(__dirname, '../../themisto/src/app.js')
 
 /**
  * Delegara la orden de busqueda a "themisto". A su vez notificara el resultado de la misma.
