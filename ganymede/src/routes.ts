@@ -1,6 +1,7 @@
 import { OrderController } from './controller/OrderController'
 import { ProductController } from './controller/ProductController'
 import { IndexController } from './controller/IndexController'
+import { ProviderController } from './controller/ProviderController'
 
 /**
  * Expone todos los "endpoints" posibles en la API.
@@ -11,6 +12,12 @@ export const Routes = [
     route: '/',
     controller: IndexController,
     action: 'welcome'
+  },
+  {
+    method: 'get',
+    route: 'provider/',
+    controller: ProviderController,
+    action: 'read'
   },
   {
     method: 'post',

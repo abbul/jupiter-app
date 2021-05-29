@@ -7,7 +7,7 @@ export class IndexController {
   /**
    * Bienvenida a jupiter-app
    */
-  async welcome (req: Request, res: Response) {
+  async welcome(req: Request, res: Response) {
     const routes = Routes.map(route => {
       return {
         method: route.method,

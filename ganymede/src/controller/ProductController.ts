@@ -7,7 +7,7 @@ export class ProductController {
   /**
    * Retornara todas los productos existentes que cumplan con la categoria recibida.
    */
-  async readForProductCategoryID (req: Request, res: Response) {
+  async readForProductCategoryID(req: Request, res: Response) {
     const { product_category_id: productCategoryID } = req.params
     const products = await ProductRepository.findByCategory(productCategoryID)
 
