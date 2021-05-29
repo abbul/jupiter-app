@@ -9,6 +9,6 @@
   "author": "Abbul Rodriguez",
   "license": "ISC",
   "dependencies": {
-    "puppeteer": "^4.0.1"
+    "puppeteer": "^8.0.0"
   }
 }
